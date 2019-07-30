@@ -12,6 +12,10 @@ app.use('/car',middleware.checkToken, carsRoutes);
 app.use('/client',middleware.checkToken, clientRoutes);
 app.use('/auth', authRoutes);
 
-app.listen(3000);
+const port = process.env.PORT || 5000;
+
+app.listen(port, () => {
+    console.log("Server listen to: ", port)
+});
 
 module.exports = app;
