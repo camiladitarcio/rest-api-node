@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use('/car',middleware.checkToken, carsRoutes);
-app.use('/client',middleware.checkToken, clientRoutes);
+app.use('/client', clientRoutes);
 app.use('/auth', authRoutes);
 
 const port = process.env.PORT || 5000;
