@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
             );
             return handleResponse(200, res, {token});
         } else {
-            return handleResponse(401, res, message);
+            return handleResponse(401, res, message); // UNAUTHORIZED
         }
     } catch (error) {
         return handleResponse(400, res, MESSAGES.FAILURE_BAD_REQUEST)

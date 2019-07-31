@@ -4,7 +4,7 @@ const router = express.Router();
 const QUERY = require('../db/queries/client');
 const { RESPONSE, MESSAGE } = require('./responses');
 const bcrypt = require('bcryptjs');
-const { handleResponse } = require('../utils');
+const { handleResponse, findById } = require('../utils');
 
 router.get('/', async (req, res) => {
     try {
@@ -29,11 +29,17 @@ router.post('/', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
+        const isIdExist = await findById(req.params.id);
+        if(!isIdExist) {
+            return handleResponse(404, res)
+        }
         await db.query(QUERY.DELETE, [req.params.id])
         return handleResponse(200, res);
     } catch (error) {
         return handleResponse(400, res, MESSAGE.FAILURE_BAD_REQUEST);
-    }
+    } 
 });
+
+// agregar 404 id not found a DELETE    
 
 module.exports = router;
