@@ -43,7 +43,7 @@ const CAR = {
         model: 'test'       
     },
     END_POINT: '/car',
-    INEXISTENT_ID: 2
+    INEXISTENT_ID: 200000000000
 }
 
 module.exports = {AUTH, TOKEN, CAR};
