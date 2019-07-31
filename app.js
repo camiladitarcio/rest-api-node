@@ -7,9 +7,11 @@ const authRoutes = require('./routes/auth');
 const swaggerFile = require('./docs/swagger.json');
 const swaggerDoc = require('swagger-ui-express');
 const middleware = require('./middleware');
+const cors = require('cors');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use(cors());
 app.use('/car',middleware.checkToken, carsRoutes);
 app.use('/client', clientRoutes);
 app.use('/auth', authRoutes);
