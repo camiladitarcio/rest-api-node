@@ -5,6 +5,7 @@ const { getLastId } = require('../utils');
 const { AUTH, TOKEN, CAR } = require('../fixtures/mocks');
 
 let token = "";
+const inexistentId = 90000;
 
 ////////////* AUTH *////////////// 
 //////// ///* post *//////////////
@@ -113,9 +114,10 @@ describe(`PATCH ${CAR.END_POINT}`, () => {
     })
     it('should return 404', async () => {
         await request(app)
-        .patch(`${CAR.END_POINT}/${CAR.INEXISTENT_ID}`)
+        .patch(`${CAR.END_POINT}/${inexistentId}`)
         .set('key', token)
         .expect(404) // inexistent id
+        console.log(inexistentId)
     })
 });
 
@@ -154,7 +156,7 @@ describe(`PUT ${CAR.END_POINT}`, () => {
     })
     it('should return 404', async () => {
         await request(app)
-        .put(`${CAR.END_POINT}/${CAR.INEXISTENT_ID}`)
+        .put(`${CAR.END_POINT}/${inexistentId}`)
         .set('key', token)
         .expect(404) // inexistent id
     })
@@ -185,7 +187,7 @@ describe(`DELETE ${CAR.END_POINT}`, () => {
     })
     it('should return 404', async () => {
         await request(app)
-        .delete(`${CAR.END_POINT}/${CAR.INEXISTENT_ID}`)
+        .delete(`${CAR.END_POINT}/${inexistentId}`)
         .set('key', token) 
         .expect(404) // inexistent id
     })
