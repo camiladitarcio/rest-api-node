@@ -7,6 +7,8 @@ const { AUTH, TOKEN, CAR } = require('../fixtures/mocks');
 let token = "";
 const inexistentId = 90000;
 
+console.log('q hiciste camila')
+
 ////////////* AUTH *////////////// 
 //////// ///* post *//////////////
 describe(`POST ${AUTH.END_POINT}`, () => {
